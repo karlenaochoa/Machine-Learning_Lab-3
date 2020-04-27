@@ -1,0 +1,2520 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Lab 3},
+  pdfauthor={Karlena Ochoa},
+  pdfborder={0 0 0},
+  breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-2}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\title{Lab 3}
+\author{Karlena Ochoa}
+\date{4/24/2020}
+
+\begin{document}
+\maketitle
+
+\hypertarget{read-in-the-train.csv-data.-please-feel-free-to-use-sample_frac-if-you-find-that-the-data-file-is-too-large-for-your-machine.}{%
+\subsection{\texorpdfstring{Read in the \texttt{train.csv} data. Please
+feel free to use \texttt{sample\_frac()} if you find that the data file
+is too large for your
+machine.}{Read in the train.csv data. Please feel free to use sample\_frac() if you find that the data file is too large for your machine.}}\label{read-in-the-train.csv-data.-please-feel-free-to-use-sample_frac-if-you-find-that-the-data-file-is-too-large-for-your-machine.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{col_specs <-}\StringTok{ }\KeywordTok{cols}\NormalTok{(}
+  \DataTypeTok{.default =} \KeywordTok{col_character}\NormalTok{(),}
+  \DataTypeTok{id =} \KeywordTok{col_double}\NormalTok{(),}
+  \DataTypeTok{attnd_dist_inst_id =} \KeywordTok{col_double}\NormalTok{(),}
+  \DataTypeTok{attnd_schl_inst_id =} \KeywordTok{col_double}\NormalTok{(),}
+  \DataTypeTok{enrl_grd =} \KeywordTok{col_double}\NormalTok{(),}
+  \DataTypeTok{calc_admn_cd =} \KeywordTok{col_logical}\NormalTok{(),}
+  \DataTypeTok{partic_dist_inst_id =} \KeywordTok{col_double}\NormalTok{(),}
+  \DataTypeTok{partic_schl_inst_id =} \KeywordTok{col_double}\NormalTok{(),}
+  \DataTypeTok{lang_cd =} \KeywordTok{col_character}\NormalTok{(), }\CommentTok{#<<}
+  \DataTypeTok{score =} \KeywordTok{col_double}\NormalTok{(),}
+  \DataTypeTok{classification =} \KeywordTok{col_double}\NormalTok{(),}
+  \DataTypeTok{ncessch =} \KeywordTok{col_double}\NormalTok{(),}
+  \DataTypeTok{lat =} \KeywordTok{col_double}\NormalTok{(),}
+  \DataTypeTok{lon =} \KeywordTok{col_double}\NormalTok{()}
+\NormalTok{)}
+
+\NormalTok{d <-}\StringTok{ }\NormalTok{vroom}\OperatorTok{::}\KeywordTok{vroom}\NormalTok{(here}\OperatorTok{::}\KeywordTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{, }\StringTok{"train.csv"}\NormalTok{),}
+                  \DataTypeTok{col_types =}\NormalTok{ col_specs)}
+
+\NormalTok{d <-}\StringTok{ }\KeywordTok{sample_frac}\NormalTok{(d, }\FloatTok{0.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{initial-split}{%
+\subsection{1. Initial Split}\label{initial-split}}
+
+Set a seed and split the data into a training set and a testing set as
+two named objects.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{splt <-}\StringTok{ }\KeywordTok{initial_split}\NormalTok{(d)}
+\NormalTok{train <-}\StringTok{ }\KeywordTok{training}\NormalTok{(splt)}
+\NormalTok{test <-}\StringTok{ }\KeywordTok{testing}\NormalTok{(splt)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{resample}{%
+\subsection{2. Resample}\label{resample}}
+
+Set a seed and use 10-fold cross-validation to resample the training
+data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{199}\NormalTok{)}
+\NormalTok{cv_splits <-}\StringTok{ }\KeywordTok{vfold_cv}\NormalTok{(train)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{preprocess}{%
+\subsection{3. Preprocess}\label{preprocess}}
+
+Complete the code maze below by filling in the blanks (\_\_\_\_) to
+create a recipe object that includes: * a formula model with
+\texttt{score} predicted by 4 predictors * be sure there are no missing
+data in your predictors (try \texttt{step\_naomit()}) * center and scale
+all numeric predictors * dummy code all nominal predictors
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso4_rec <-}\StringTok{ }
+\StringTok{  }\KeywordTok{recipe}\NormalTok{(}
+    \DataTypeTok{formula =}\NormalTok{ score }\OperatorTok{~}\StringTok{ }\NormalTok{gndr }\OperatorTok{+}\StringTok{ }\NormalTok{econ_dsvntg }\OperatorTok{+}\StringTok{ }\NormalTok{migrant_ed_fg }\OperatorTok{+}\StringTok{ }\NormalTok{enrl_grd,}
+    \DataTypeTok{data =}\NormalTok{ train }\CommentTok{#use your training set here}
+\NormalTok{  ) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{step_naomit}\NormalTok{(}\KeywordTok{everything}\NormalTok{(), }\DataTypeTok{skip =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{step_string2factor}\NormalTok{(migrant_ed_fg, gndr, econ_dsvntg) }\OperatorTok{%>%}\StringTok{  }\CommentTok{#may not need, depending on your formula}
+\StringTok{  }\KeywordTok{step_dummy}\NormalTok{(migrant_ed_fg, gndr, econ_dsvntg) }\OperatorTok{%>%}\StringTok{ }\CommentTok{#may not need, depending on your formula}
+\StringTok{  }\KeywordTok{step_normalize}\NormalTok{(enrl_grd) }\CommentTok{#may not need, depending on your formula}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{parsnip-model}{%
+\subsection{4. Parsnip model}\label{parsnip-model}}
+
+Create a \texttt{\{parsnip\}} lasso model where the penalty
+hyperparameter is set to be tuned.
+
+Setting lasso model and fitting model
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod_lasso <-}\StringTok{ }\KeywordTok{linear_reg}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{set_engine}\NormalTok{(}\StringTok{"glmnet"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{set_mode}\NormalTok{(}\StringTok{"regression"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\CommentTok{# redundant; just getting in the habit}
+\StringTok{  }\KeywordTok{set_args}\NormalTok{(}\DataTypeTok{penalty =} \KeywordTok{tune}\NormalTok{(), }\CommentTok{# we set the penalty = .1 }
+           \DataTypeTok{mixture =} \DecValTok{1}\NormalTok{) }\CommentTok{# specifies a lasso regression model}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{fit-a-tuned-lasso-model}{%
+\subsection{5. Fit a tuned lasso model}\label{fit-a-tuned-lasso-model}}
+
+Complete the code maze below to fit a tuned lasso model.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso_grid <-}\StringTok{ }\KeywordTok{grid_regular}\NormalTok{(}\KeywordTok{penalty}\NormalTok{())}
+
+\NormalTok{lasso4_fit_}\DecValTok{1}\NormalTok{ <-}\StringTok{ }\KeywordTok{tune_grid}\NormalTok{(}
+\NormalTok{  mod_lasso,}
+  \DataTypeTok{preprocessor =}\NormalTok{ lasso4_rec,}
+  \DataTypeTok{resamples =}\NormalTok{ cv_splits,}
+  \DataTypeTok{grid =}\NormalTok{ lasso_grid,}
+  \DataTypeTok{control =}\NormalTok{ tune}\OperatorTok{::}\KeywordTok{control_resamples}\NormalTok{(}\DataTypeTok{verbose =} \OtherTok{TRUE}\NormalTok{,}
+                                    \DataTypeTok{save_pred =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## i Fold01: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold01: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold01: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold01: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold02: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold02: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold02: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold03: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold03: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold03: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold04: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold04: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold04: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold05: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold05: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold05: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold06: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold06: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold06: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold07: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold07: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold07: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold08: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold08: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold08: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold09: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold09: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold09: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold10: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold10: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold10: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\hypertarget{question-a}{%
+\subsubsection{Question A}\label{question-a}}
+
+\begin{itemize}
+\tightlist
+\item
+  How many models were fit to each fold of \texttt{lasso4\_fit\_1}?
+  (Please provide a numeric answer, \emph{and} use code to corroborate
+  your answer.)
+\end{itemize}
+
+3 were fit to each fold
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso4_fit_}\DecValTok{1} \OperatorTok{%>%}\StringTok{  }
+\StringTok{  }\KeywordTok{collect_metrics}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 6
+##        penalty .metric .estimator    mean     n std_err
+##          <dbl> <chr>   <chr>        <dbl> <int>   <dbl>
+## 1 0.0000000001 rmse    standard   102.       10 0.404  
+## 2 0.0000000001 rsq     standard     0.223    10 0.00298
+## 3 0.00001      rmse    standard   102.       10 0.404  
+## 4 0.00001      rsq     standard     0.223    10 0.00298
+## 5 1            rmse    standard   102.       10 0.405  
+## 6 1            rsq     standard     0.223    10 0.00306
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso_grid}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 1
+##        penalty
+##          <dbl>
+## 1 0.0000000001
+## 2 0.00001     
+## 3 1
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Use code to list the different values of \texttt{penalty()} that were
+  used.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  0.0000000001
+\item
+  0.00001\\
+\item
+  1
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso_grid}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 1
+##        penalty
+##          <dbl>
+## 1 0.0000000001
+## 2 0.00001     
+## 3 1
+\end{verbatim}
+
+\hypertarget{fit-another-tuned-lasso-model}{%
+\subsection{6. Fit another tuned lasso
+model}\label{fit-another-tuned-lasso-model}}
+
+Use your code from (5) above to complete the code maze below to fit a
+second tuned lasso model, using the same \texttt{parsnip} model,
+\texttt{recipe}, and resampled object you used before.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso4_fit_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{tune_grid}\NormalTok{(}
+\NormalTok{  mod_lasso,}
+  \DataTypeTok{preprocessor =}\NormalTok{ lasso4_rec,}
+  \DataTypeTok{resamples =}\NormalTok{ cv_splits,}
+  \DataTypeTok{control =}\NormalTok{ tune}\OperatorTok{::}\KeywordTok{control_resamples}\NormalTok{(}\DataTypeTok{verbose =} \OtherTok{TRUE}\NormalTok{,}
+                                    \DataTypeTok{save_pred =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## i Fold01: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold01: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold01: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold01: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold02: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold02: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold02: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold03: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold03: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold03: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold04: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold04: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold04: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold05: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold05: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold05: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold06: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold06: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold06: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold07: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold07: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold07: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold08: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold08: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold08: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold09: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold09: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold09: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold10: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold10: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold10: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\hypertarget{question-b}{%
+\subsubsection{Question B}\label{question-b}}
+
+\begin{itemize}
+\tightlist
+\item
+  How many models were fit to each fold of \texttt{lasso4\_fit\_2}?
+  (Please provide a numeric answer, \emph{and} use code to corroborate
+  your answer.)
+\end{itemize}
+
+10 models fit to each fold. 10 rmse values
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso4_fit_}\DecValTok{2} \OperatorTok{%>%}\StringTok{  }
+\StringTok{  }\KeywordTok{collect_metrics}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\StringTok{`}\DataTypeTok{.metric}\StringTok{`} \OperatorTok{==}\StringTok{ "rmse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 6
+##     penalty .metric .estimator  mean     n std_err
+##       <dbl> <chr>   <chr>      <dbl> <int>   <dbl>
+##  1 9.07e-10 rmse    standard    102.    10   0.404
+##  2 1.81e- 9 rmse    standard    102.    10   0.404
+##  3 3.63e- 8 rmse    standard    102.    10   0.404
+##  4 8.44e- 7 rmse    standard    102.    10   0.404
+##  5 1.76e- 6 rmse    standard    102.    10   0.404
+##  6 2.53e- 5 rmse    standard    102.    10   0.404
+##  7 1.89e- 4 rmse    standard    102.    10   0.404
+##  8 1.05e- 3 rmse    standard    102.    10   0.404
+##  9 1.21e- 2 rmse    standard    102.    10   0.404
+## 10 8.00e- 1 rmse    standard    102.    10   0.405
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  If this is different than the number of models of
+  \texttt{lasso4\_fit\_1}, please explain why.
+\end{itemize}
+
+Yes, this is different than fit 1. In the first fit the default was 3
+models, and in when using tune\_grid the default is 10.
+
+\begin{itemize}
+\tightlist
+\item
+  Use code to list the different values of \texttt{penalty()} that were
+  used for \emph{lasso4\_fit\_2}.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso4_fit_}\DecValTok{2} \OperatorTok{%>%}\StringTok{  }
+\StringTok{  }\KeywordTok{collect_metrics}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{ }\KeywordTok{select}\NormalTok{(penalty)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 20 x 1
+##     penalty
+##       <dbl>
+##  1 9.07e-10
+##  2 9.07e-10
+##  3 1.81e- 9
+##  4 1.81e- 9
+##  5 3.63e- 8
+##  6 3.63e- 8
+##  7 8.44e- 7
+##  8 8.44e- 7
+##  9 1.76e- 6
+## 10 1.76e- 6
+## 11 2.53e- 5
+## 12 2.53e- 5
+## 13 1.89e- 4
+## 14 1.89e- 4
+## 15 1.05e- 3
+## 16 1.05e- 3
+## 17 1.21e- 2
+## 18 1.21e- 2
+## 19 8.00e- 1
+## 20 8.00e- 1
+\end{verbatim}
+
+\hypertarget{complete-the-necessary-steps-to-create-and-fit-a-tuned-lasso-model-that-has-seven-or-more-predictors-use-any-tuning-grid-you-like.-note-that-you-will-need-to-create-a-new-recipe-as-well.}{%
+\subsection{7. Complete the necessary steps to create and fit a tuned
+lasso model that has seven or more predictors (use any tuning grid you
+like). Note that you will need to create a new recipe as
+well.}\label{complete-the-necessary-steps-to-create-and-fit-a-tuned-lasso-model-that-has-seven-or-more-predictors-use-any-tuning-grid-you-like.-note-that-you-will-need-to-create-a-new-recipe-as-well.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso8_rec <-}\StringTok{ }
+\StringTok{  }\KeywordTok{recipe}\NormalTok{(}
+    \DataTypeTok{formula =}\NormalTok{ score }\OperatorTok{~}\StringTok{ }\NormalTok{gndr }\OperatorTok{+}\StringTok{ }\NormalTok{econ_dsvntg }\OperatorTok{+}\StringTok{ }\NormalTok{migrant_ed_fg }\OperatorTok{+}\StringTok{ }\NormalTok{enrl_grd }\OperatorTok{+}\StringTok{ }\NormalTok{sp_ed_fg }\OperatorTok{+}\StringTok{ }\NormalTok{tag_ed_fg }\OperatorTok{+}\StringTok{ }\NormalTok{lat }\OperatorTok{+}\StringTok{ }\NormalTok{lon,}
+    \DataTypeTok{data =}\NormalTok{ train }\CommentTok{#use your training set here}
+\NormalTok{  ) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{step_naomit}\NormalTok{(}\KeywordTok{everything}\NormalTok{(), }\DataTypeTok{skip =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{step_string2factor}\NormalTok{(migrant_ed_fg, gndr, econ_dsvntg, sp_ed_fg, tag_ed_fg) }\OperatorTok{%>%}\StringTok{  }\CommentTok{#may not need, depending on your formula}
+\StringTok{  }\KeywordTok{step_dummy}\NormalTok{(migrant_ed_fg, gndr, econ_dsvntg, sp_ed_fg, tag_ed_fg) }\OperatorTok{%>%}\StringTok{ }\CommentTok{#may not need, depending on your formula}
+\StringTok{  }\KeywordTok{step_normalize}\NormalTok{(enrl_grd, lat, lon)}
+
+\NormalTok{lasso8_fit_}\DecValTok{1}\NormalTok{ <-}\StringTok{ }\KeywordTok{tune_grid}\NormalTok{(}
+\NormalTok{  mod_lasso,}
+  \DataTypeTok{preprocessor =}\NormalTok{ lasso8_rec,}
+  \DataTypeTok{resamples =}\NormalTok{ cv_splits,}
+  \DataTypeTok{grid =}\NormalTok{ lasso_grid,}
+  \DataTypeTok{control =}\NormalTok{ tune}\OperatorTok{::}\KeywordTok{control_resamples}\NormalTok{(}\DataTypeTok{verbose =} \OtherTok{TRUE}\NormalTok{,}
+                                    \DataTypeTok{save_pred =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## i Fold01: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold01: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold01: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold01: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold02: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold02: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold02: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold03: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold03: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold03: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold04: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold04: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold04: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold05: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold05: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold05: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold06: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold06: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold06: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold07: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold07: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold07: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold08: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold08: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold08: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold09: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold09: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold09: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold10: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold10: model 1/1
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 1/1 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold10: model 1/1 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso8_fit_}\DecValTok{1} \OperatorTok{%>%}\StringTok{  }
+\StringTok{  }\KeywordTok{collect_metrics}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\StringTok{`}\DataTypeTok{.metric}\StringTok{`} \OperatorTok{==}\StringTok{ "rmse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 6
+##        penalty .metric .estimator  mean     n std_err
+##          <dbl> <chr>   <chr>      <dbl> <int>   <dbl>
+## 1 0.0000000001 rmse    standard    92.4    10   0.391
+## 2 0.00001      rmse    standard    92.4    10   0.391
+## 3 1            rmse    standard    92.4    10   0.389
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso_grid}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 1
+##        penalty
+##          <dbl>
+## 1 0.0000000001
+## 2 0.00001     
+## 3 1
+\end{verbatim}
+
+\hypertarget{compare-the-metrics-from-the-best-lasso-model-with-4-predictors-to-the-best-lasso-model-with-7-predictors.-which-is-best}{%
+\subsection{8. Compare the metrics from the best lasso model with 4
+predictors to the best lasso model with 7+ predictors. Which is
+best?}\label{compare-the-metrics-from-the-best-lasso-model-with-4-predictors-to-the-best-lasso-model-with-7-predictors.-which-is-best}}
+
+The rmse with 4 predictors is larger (101) than the model with 8
+predictors (91.6); this suggests the model with 8 predictors is a better
+fit.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso8_fit_}\DecValTok{1} \OperatorTok{%>%}\StringTok{  }
+\StringTok{  }\KeywordTok{collect_metrics}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\StringTok{`}\DataTypeTok{.metric}\StringTok{`} \OperatorTok{==}\StringTok{ "rmse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 6
+##        penalty .metric .estimator  mean     n std_err
+##          <dbl> <chr>   <chr>      <dbl> <int>   <dbl>
+## 1 0.0000000001 rmse    standard    92.4    10   0.391
+## 2 0.00001      rmse    standard    92.4    10   0.391
+## 3 1            rmse    standard    92.4    10   0.389
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso4_fit_}\DecValTok{1} \OperatorTok{%>%}\StringTok{  }
+\StringTok{  }\KeywordTok{collect_metrics}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\StringTok{`}\DataTypeTok{.metric}\StringTok{`} \OperatorTok{==}\StringTok{ "rmse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 6
+##        penalty .metric .estimator  mean     n std_err
+##          <dbl> <chr>   <chr>      <dbl> <int>   <dbl>
+## 1 0.0000000001 rmse    standard    102.    10   0.404
+## 2 0.00001      rmse    standard    102.    10   0.404
+## 3 1            rmse    standard    102.    10   0.405
+\end{verbatim}
+
+\hypertarget{fit-a-tuned-elastic-net-model-with-the-same-predictors-from-9.}{%
+\subsection{9. Fit a tuned elastic net model with the same predictors
+from
+(9).}\label{fit-a-tuned-elastic-net-model-with-the-same-predictors-from-9.}}
+
+\begin{itemize}
+\tightlist
+\item
+  Create a new \texttt{\{parsnip\}} elastic net model
+\item
+  Use the same recipe from (9) above
+\item
+  Create and apply a regular grid for the elastic net model
+\item
+  Compare the metrics from the elastic net model to the best lasso model
+  from (10). Which would you choose for your final model? What are the
+  best hyperparameters for that model?
+\end{itemize}
+
+The enet model and the lasso model have identical rmse and standard
+error parameters (rmse = 91.6, se = .60). Interestingly, the best
+penalty is essentially zero.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod_enet <-}\StringTok{ }\KeywordTok{linear_reg}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{set_engine}\NormalTok{(}\StringTok{"glmnet"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{set_mode}\NormalTok{(}\StringTok{"regression"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{set_args}\NormalTok{(}\DataTypeTok{penalty =} \FloatTok{.1}\NormalTok{, }
+           \DataTypeTok{mixture =} \FloatTok{.7}\NormalTok{)}
+
+\NormalTok{fit_enet <-}\StringTok{ }\KeywordTok{fit_resamples}\NormalTok{(}
+\NormalTok{  mod_enet,}
+  \DataTypeTok{preprocessor =}\NormalTok{ lasso8_rec,}
+\NormalTok{  cv_splits,}
+  \DataTypeTok{metrics =} \KeywordTok{metric_set}\NormalTok{(rmse),}
+  \DataTypeTok{control =} \KeywordTok{control_grid}\NormalTok{(}\DataTypeTok{verbose =} \OtherTok{TRUE}\NormalTok{,}
+                         \DataTypeTok{save_pred =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## i Fold01: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold01: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold01: model
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold01: model (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold02: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold02: model
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold02: model (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold03: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold03: model
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold03: model (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold04: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold04: model
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold04: model (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold05: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold05: model
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold05: model (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold06: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold06: model
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold06: model (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold07: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold07: model
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold07: model (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold08: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold08: model
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold08: model (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold09: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold09: model
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold09: model (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold10: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold10: model
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold10: model (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(enet_params <-}\StringTok{ }\KeywordTok{parameters}\NormalTok{(}\KeywordTok{penalty}\NormalTok{(), }\KeywordTok{mixture}\NormalTok{()))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Collection of 2 parameters for tuning
+## 
+##       id parameter type object class
+##  penalty        penalty    nparam[+]
+##  mixture        mixture    nparam[+]
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(enet_grid <-}\StringTok{ }\KeywordTok{grid_regular}\NormalTok{(enet_params, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{5}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 50 x 2
+##          penalty mixture
+##            <dbl>   <dbl>
+##  1 0.0000000001        0
+##  2 0.00000000129       0
+##  3 0.0000000167        0
+##  4 0.000000215         0
+##  5 0.00000278          0
+##  6 0.0000359           0
+##  7 0.000464            0
+##  8 0.00599             0
+##  9 0.0774              0
+## 10 1                   0
+## # ... with 40 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{enet_tune_mod <-}\StringTok{ }\KeywordTok{linear_reg}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{set_engine}\NormalTok{(}\StringTok{"glmnet"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{set_args}\NormalTok{(}\DataTypeTok{penalty =} \KeywordTok{tune}\NormalTok{(), }
+           \DataTypeTok{mixture =} \KeywordTok{tune}\NormalTok{())}
+
+\NormalTok{enet_tune_mod_results <-}\StringTok{ }\KeywordTok{tune_grid}\NormalTok{(}
+\NormalTok{  enet_tune_mod,}
+  \DataTypeTok{preprocessor =}\NormalTok{ lasso8_rec,}
+  \DataTypeTok{resamples =}\NormalTok{ cv_splits,}
+  \DataTypeTok{grid =}\NormalTok{ enet_grid,}
+  \DataTypeTok{control =}\NormalTok{ tune}\OperatorTok{::}\KeywordTok{control_resamples}\NormalTok{(}\DataTypeTok{verbose =} \OtherTok{TRUE}\NormalTok{,}
+                                    \DataTypeTok{save_pred =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## i Fold01: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold01: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold01: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 1/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold01: model 1/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold01: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 2/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold01: model 2/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold01: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 3/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold01: model 3/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold01: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 4/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold01: model 4/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold01: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold01: model 5/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold01: model 5/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold02: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold02: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 1/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold02: model 1/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold02: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 2/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold02: model 2/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold02: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 3/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold02: model 3/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold02: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 4/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold02: model 4/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold02: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold02: model 5/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold02: model 5/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold03: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold03: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 1/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold03: model 1/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold03: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 2/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold03: model 2/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold03: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 3/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold03: model 3/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold03: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 4/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold03: model 4/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold03: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold03: model 5/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold03: model 5/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold04: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold04: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 1/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold04: model 1/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold04: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 2/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold04: model 2/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold04: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 3/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold04: model 3/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold04: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 4/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold04: model 4/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold04: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold04: model 5/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold04: model 5/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold05: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold05: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 1/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold05: model 1/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold05: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 2/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold05: model 2/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold05: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 3/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold05: model 3/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold05: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 4/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold05: model 4/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold05: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold05: model 5/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold05: model 5/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold06: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold06: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 1/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold06: model 1/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold06: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 2/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold06: model 2/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold06: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 3/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold06: model 3/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold06: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 4/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold06: model 4/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold06: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold06: model 5/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold06: model 5/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold07: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold07: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 1/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold07: model 1/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold07: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 2/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold07: model 2/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold07: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 3/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold07: model 3/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold07: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 4/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold07: model 4/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold07: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold07: model 5/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold07: model 5/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold08: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold08: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 1/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold08: model 1/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold08: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 2/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold08: model 2/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold08: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 3/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold08: model 3/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold08: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 4/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold08: model 4/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold08: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold08: model 5/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold08: model 5/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold09: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold09: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 1/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold09: model 1/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold09: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 2/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold09: model 2/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold09: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 3/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold09: model 3/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold09: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 4/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold09: model 4/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold09: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold09: model 5/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold09: model 5/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold10: recipe
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold10: model 1/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 1/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold10: model 1/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold10: model 2/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 2/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold10: model 2/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold10: model 3/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 3/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold10: model 3/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold10: model 4/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 4/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold10: model 4/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## v Fold10: model 5/5
+\end{verbatim}
+
+\begin{verbatim}
+## i Fold10: model 5/5 (predictions)
+\end{verbatim}
+
+\begin{verbatim}
+## ! Fold10: model 5/5 (predictions): There are new levels in a factor: NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{collect_metrics}\NormalTok{(enet_tune_mod_results)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 100 x 7
+##         penalty mixture .metric .estimator   mean     n std_err
+##           <dbl>   <dbl> <chr>   <chr>       <dbl> <int>   <dbl>
+##  1 0.0000000001    0    rmse    standard   92.4      10 0.393  
+##  2 0.0000000001    0    rsq     standard    0.366    10 0.00456
+##  3 0.0000000001    0.25 rmse    standard   92.4      10 0.391  
+##  4 0.0000000001    0.25 rsq     standard    0.366    10 0.00458
+##  5 0.0000000001    0.5  rmse    standard   92.4      10 0.391  
+##  6 0.0000000001    0.5  rsq     standard    0.366    10 0.00458
+##  7 0.0000000001    0.75 rmse    standard   92.4      10 0.391  
+##  8 0.0000000001    0.75 rsq     standard    0.366    10 0.00458
+##  9 0.0000000001    1    rmse    standard   92.4      10 0.391  
+## 10 0.0000000001    1    rsq     standard    0.366    10 0.00458
+## # ... with 90 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{enet_tune_mod_results }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{show_best}\NormalTok{(}\DataTypeTok{metric =} \StringTok{"rmse"}\NormalTok{, }\DataTypeTok{n =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 7
+##        penalty mixture .metric .estimator  mean     n std_err
+##          <dbl>   <dbl> <chr>   <chr>      <dbl> <int>   <dbl>
+## 1 0.0000000001     0.5 rmse    standard    92.4    10   0.391
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso8_fit_}\DecValTok{1} \OperatorTok{%>%}\StringTok{  }
+\StringTok{  }\KeywordTok{show_best}\NormalTok{(}\DataTypeTok{metric =} \StringTok{"rmse"}\NormalTok{, }\DataTypeTok{n =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 6
+##        penalty .metric .estimator  mean     n std_err
+##          <dbl> <chr>   <chr>      <dbl> <int>   <dbl>
+## 1 0.0000000001 rmse    standard    92.4    10   0.391
+\end{verbatim}
+
+\end{document}
